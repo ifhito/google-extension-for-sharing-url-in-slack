@@ -1,9 +1,8 @@
+//read webhookUrl from localStorage
 const slack_url = localStorage.getItem('webhookUrl');
-const channel_name = '';
-const user_name = '';
-const unfurl_links = true;
-
+//call when onclick of #sendSlack
 document.getElementById('sendSlack').onclick = () => {
+    //function that send message to slack
     const sendSlack = async (message) => {
         const data = {"text":message};
         const method = 'POST';
@@ -16,20 +15,24 @@ document.getElementById('sendSlack').onclick = () => {
             console.log(response.status);
         });
     };
+    //get comment to document
     const comment = document.getElementById('comment').value;
-    getCurrentTabUrlandTitleandComment(sendSlack,comment)
+    //send sendSlack-function and comment
+    getCurrentTabUrlandTitle(sendSlack,comment)
 };
-
-const getCurrentTabUrlandTitleandComment = (sendSlack,comment) => {
+//function of get current open tab url and title
+const getCurrentTabUrlandTitle = (sendSlack,comment) => {
+    //setting of getting infomation by current tab
     const queryInfo = {
         active: true,
         currentWindow: true
     };
-
+    //get tab info
     chrome.tabs.query(queryInfo, async (tab) => {
         const Url = String(tab[0].url);
         const Title = String(tab[0].title);
-        let message = comment+'\n\n'+Title+'\n'+Url;
+        const message = comment+'\n\n'+Title+'\n'+Url;
+        //set message to sendSlack
         sendSlack(message);
     })
 }

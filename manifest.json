@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "copy_selected",
-    "description": "copy_selected",
+    "name": "send info to Slack",
+    "description": "send infomation that you think good to Slack",
     "version": "1.0",
     "background": {
     },
@@ -20,7 +20,7 @@
     },
     "browser_action": {
         "default_popup": "popup.html",
-        "default_title": "slackにurlを送信",
+        "default_title": "Slackにurlを送信",
         "default_icon": "image/api_200.png"
     },
     "options_page": "options.html",
