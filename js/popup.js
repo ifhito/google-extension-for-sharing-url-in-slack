@@ -1,9 +1,9 @@
-//read webhookUrl from localStorage
-const slack_url = localStorage.getItem('webhookUrl');
 //call when onclick of #sendSlack
 document.getElementById('sendSlack').onclick = () => {
     //function that send message to slack
     const sendSlack = async (message) => {
+        //read webhookUrl from localStorage
+        const slack_url = localStorage.getItem('webhookUrl');
         const data = {"text":message};
         const method = 'POST';
         const body = JSON.stringify(data);
