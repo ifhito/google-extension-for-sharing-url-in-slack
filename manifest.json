@@ -1,28 +1,31 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "send info to Slack",
     "description": "send infomation that you think good to Slack",
     "version": "1.0",
     "background": {
+        "service_worker": "./js/background.js"
     },
     "permissions": [
         "contextMenus",
         "clipboardRead",
         "tabs",
         "storage",
-        "http://*/",
-        "https://*/",
         "identity",
         "identity.email"
+    ],
+    "host_permissions": [
+        "http://*/",
+        "https://*/"
     ],
     "icons": {
         "48": "image/slacks.png"
     },
-    "browser_action": {
+    "action": {
         "default_popup": "popup.html",
         "default_title": "Slackにurlを送信",
         "default_icon": "image/slacks.png"
     },
     "options_page": "options.html",
-    "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+    "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'self'"}
 }
