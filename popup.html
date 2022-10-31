@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lnag="ja">
+<html lang="ja">
 
 <head>
     <meta charset="utf-8">
@@ -8,9 +8,11 @@
 
 <body>
     <p>コメント入力</p>
-    <textarea value="" id="comment" rows="5" cols="40"></textarea>
-    <button id="sendSlack" value="">slackに送信する</button>
-    <script src="js/popup.js"></script>
+    <div id="send-comment-wrapper">
+        <textarea value="" id="comment" rows="5" cols="40"></textarea>
+        <button id="send-slack" value="" type="button">slackに送信する</button>
+    </div>
+    <script type="module" src="js/popup.js"></script>
 </body>
 
 </html>

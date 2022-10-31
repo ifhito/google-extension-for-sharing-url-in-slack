@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lnag="ja">
+<html lang="ja">
 
 <head>
     <meta charset="utf-8">
@@ -8,9 +8,11 @@
 
 <body>
     <p>Incoming WebhookのWebhook URLを設定</p>
-    <input type="text" value="" id="webhookUrl"/>
-    <button id="saveURL" value="">保存</button>
-    <script src="js/options.js"></script>
+    <div id="input-url-wrapper">
+        <input type="text" value="" id="webhook-url"/>
+        <button id="save-url" type="button">保存</button>
+    </div>
+    <script  type="module" src="js/options.js"></script>
 </body>
 
 </html>

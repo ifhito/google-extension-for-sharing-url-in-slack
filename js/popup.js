@@ -1,7 +1,11 @@
+import { removeElement, insertElement } from "./common.js";
+const COMMENTID = 'comment';
+const SENDSLACKID = 'send-slack';
+const SENDWRAPPERID = 'send-comment-wrapper';
 //call when onclick of #sendSlack
-document.getElementById('sendSlack').onclick = () => {
+document.getElementById(SENDSLACKID).onclick = () => {
     //get comment to document
-    const comment = document.getElementById('comment').value;
+    const comment = document.getElementById(COMMENTID).value;
     //send sendSlack-function and comment
     getCurrentTabUrlandTitle(comment)
 };
@@ -17,7 +21,7 @@ const getCurrentTabUrlandTitle = (comment) => {
     //function that send message to slack
     const sendSlack = async (message) => {
         //read webhookUrl from localStorage
-        const slack_url = localStorage.getItem('webhookUrl');
+        const slack_url = localStorage.getItem('webhookURL');
         const data = {"text":message};
         const method = 'POST';
         const body = JSON.stringify(data);
@@ -37,5 +41,9 @@ const getCurrentTabUrlandTitle = (comment) => {
         const message = comment+'\n\n'+Title+'\n'+Url;
         //set message to sendSlack
         sendSlack(message);
+
+        removeElement(SENDSLACKID);
+        removeElement(COMMENTID);
+        insertElement(SENDWRAPPERID,'afterbegin','<p>文章を送信しました</p>');
     })
 }
